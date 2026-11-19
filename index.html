@@ -3,26 +3,60 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Phúc Sen Homestay - Nhà Sàn Làng Nghề Quảng Uyên</title>
+  <title>Homestay Du lịch Cao Bằng | Lưu trú bản địa</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header class="app-header">
     <div class="header-top">
       <div>
-        <h1>🏡 Phúc Sen Homestay</h1>
-        <p class="subtitle">Kết nối nhà sàn bản địa • Quảng Uyên, Cao Bằng</p>
+        <a class="brand" href="#" aria-label="Homestay Du lịch Cao Bằng - Trang chủ">
+          <span class="brand-mark" aria-hidden="true">CB</span>
+          <span>
+            <span class="brand-name">Homestay Du lịch</span>
+            <span class="brand-caption">Cao Bằng</span>
+          </span>
+        </a>
       </div>
-      <button id="toggleRoleBtn" class="role-btn">👩‍🌾 Chế độ Chủ nhà</button>
+      <button id="toggleRoleBtn" class="role-btn" type="button">Đăng nhập quản lý <span aria-hidden="true">↗</span></button>
     </div>
   </header>
 
   <main class="container">
     <!-- KHU VỰC DÀNH CHO KHÁCH DU LỊCH -->
     <section id="guestView">
+      <div class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow"><span aria-hidden="true">✳</span> Khám phá Cao Bằng · Những miền đất đáng nhớ</p>
+          <h1>Chạm vào nhịp sống <em>bản làng</em></h1>
+          <p class="hero-description">Chọn một mái nhà địa phương, khám phá văn hóa và cảnh sắc từ Phúc Sen, Trùng Khánh đến Trà Lĩnh.</p>
+          <a class="hero-link" href="#homestaySection">Khám phá nhà sàn <span aria-hidden="true">↓</span></a>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="hero-sun"></div>
+          <div class="hero-mountain hero-mountain-back"></div>
+          <div class="hero-mountain hero-mountain-front"></div>
+          <div class="hero-stamp"><span>LƯU TRÚ</span><strong>CAO BẰNG</strong><span>MIỀN NON NƯỚC</span></div>
+          <span class="hero-art-caption">Miền di sản · 22° N</span>
+        </div>
+      </div>
+
+      <div class="craft-note">
+        <span class="craft-icon" aria-hidden="true">✳</span>
+        <p><strong>Một miền văn hóa, nhiều điều để nhớ.</strong> Từ tiếng búa rèn ở Phúc Sen đến non nước Trùng Khánh, Trà Lĩnh — mỗi nơi có câu chuyện riêng được sẻ chia bởi người bản địa.</p>
+      </div>
+
+      <div id="homestaySection" class="listing-heading">
+        <div>
+          <p class="eyebrow">Lưu trú bản địa</p>
+          <h2>Ở đâu tại Cao Bằng?</h2>
+        </div>
+        <span class="listing-note">Khám phá những chốn dừng chân ở từng khu vực</span>
+      </div>
+
       <div class="filter-bar">
-        <button class="filter-btn active" data-filter="all">Tất cả nhà sàn</button>
-        <button class="filter-btn" data-filter="available">🟢 Chỉ xem nhà còn phòng</button>
+        <button class="filter-btn active" type="button" data-filter="all">Tất cả nhà sàn</button>
+        <button class="filter-btn" type="button" data-filter="available"><span class="availability-dot" aria-hidden="true"></span> Chỉ xem nhà còn phòng</button>
       </div>
 
       <div id="homestayList" class="homestay-grid">
@@ -33,22 +67,24 @@
     <!-- KHU VỰC DÀNH CHO CHỦ NHÀ / QUẢN LÝ -->
     <section id="hostView" class="hidden">
       <div class="host-banner">
-        <h2>👩‍🌾 Quản lý trạng thái phòng & Đăng ký nhà sàn</h2>
-        <p>Chạm vào nút trạng thái để báo cho khách biết nhà còn phòng hay đã kín chỗ, hoặc thêm nhà sàn mới bên dưới.</p>
+        <span id="sessionBadge" class="session-badge"></span>
+        <h2 id="hostBannerHeading">Quản lý homestay</h2>
+        <p id="hostBannerDescription">Cập nhật tình trạng phòng hoặc quản lý thông tin lưu trú.</p>
       </div>
 
       <!-- FORM THÊM HOMESTAY MỚI -->
       <form id="addHomestayForm" class="add-form">
         <h3>➕ Thêm nhà sàn / Homestay mới</h3>
         <div class="form-grid">
-          <input type="text" id="newName" placeholder="Tên Homestay (VD: Nhà sàn Pác Rằng)" required />
+          <input type="text" id="newName" placeholder="Tên Homestay (VD: Nhà sàn Mây Núi)" required />
           <input type="text" id="newHost" placeholder="Tên chủ nhà (VD: Anh Nông Văn A)" required />
-          <input type="text" id="newLocation" placeholder="Địa chỉ thôn/xóm (VD: Pác Rằng, Phúc Sen)" required />
+          <input type="text" id="newLocation" placeholder="Địa chỉ và khu vực (VD: Trùng Khánh, Cao Bằng)" required />
           <input type="text" id="newPrice" placeholder="Giá phòng (VD: 150.000đ / người / đêm)" required />
           <input type="tel" id="newPhone" placeholder="Số điện thoại / Zalo (VD: 0912345678)" required />
           <input type="text" id="newServices" placeholder="Trải nghiệm (VD: Rèn dao, cơm Nùng An)" required />
+          <input type="password" id="newHostPassword" placeholder="Mật khẩu riêng cho chủ nhà (ít nhất 8 ký tự)" minlength="8" autocomplete="new-password" required />
         </div>
-        <button type="submit" class="submit-btn">Lưu nhà sàn mới vào danh sách</button>
+        <button type="submit" class="submit-btn">Lưu homestay mới</button>
       </form>
 
       <div id="hostControlList" class="host-list">
@@ -58,31 +94,31 @@
   </main>
 
   <footer class="app-footer">
-    <p>Phát triển tại Làng nghề Phúc Sen – Quảng Uyên, Cao Bằng 🌿</p>
+    <p class="footer-project"><strong>Phúc Sen Homestay</strong> – Dự án công nghệ cộng đồng kết nối du lịch bản địa Quảng Uyên, Cao Bằng 🌿</p>
+    <p class="footer-contact">Phát triển &amp; Quản trị thông tin: <strong>Phan Văn Duy</strong> <span aria-hidden="true">•</span> Liên hệ hỗ trợ: <strong>0828.589.834</strong></p>
+    <p class="footer-disclaimer"><em>Tuyên bố minh bạch: Trang web là kênh giới thiệu thông tin du lịch cộng đồng phi lợi nhuận. Chúng tôi chỉ kết nối các cơ sở lưu trú hợp pháp tại địa phương; mọi thỏa thuận đặt phòng, giá cả và thanh toán được thực hiện trực tiếp giữa du khách và chủ homestay.</em></p>
   </footer>
 
+  <dialog id="accessDialog" class="access-dialog" aria-labelledby="accessTitle">
+    <form id="accessForm" class="access-form">
+      <p class="eyebrow">Homestay Du lịch Cao Bằng</p>
+      <h2 id="accessTitle">Đăng nhập quản lý</h2>
+      <p id="accessDescription" class="access-description"></p>
+      <label for="accessPassword">Mật khẩu</label>
+      <input id="accessPassword" type="password" autocomplete="current-password" required />
+      <div id="confirmPasswordField" class="confirm-password-field hidden">
+        <label for="accessPasswordConfirm">Nhập lại mật khẩu</label>
+        <input id="accessPasswordConfirm" type="password" autocomplete="new-password" minlength="8" />
+      </div>
+      <p id="accessError" class="access-error" role="alert"></p>
+      <div class="access-actions">
+        <button id="cancelAccessBtn" class="cancel-btn" type="button">Để sau</button>
+        <button id="accessSubmitBtn" class="submit-btn" type="submit">Tiếp tục</button>
+      </div>
+    </form>
+  </dialog>
+
   <script src="app.js"></script>
-  <script>
-    // Xử lý sự kiện thêm homestay mới
-    document.getElementById('addHomestayForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const newHomestay = {
-        id: Date.now(),
-        name: document.getElementById('newName').value,
-        host: document.getElementById('newHost').value,
-        location: document.getElementById('newLocation').value,
-        price: document.getElementById('newPrice').value,
-        services: document.getElementById('newServices').value,
-        phone: document.getElementById('newPhone').value,
-        available: true
-      };
-      homestays.push(newHomestay);
-      saveData();
-      renderGuestView();
-      renderHostView();
-      this.reset();
-    });
-  </script>
 </body>
 </html>
 
