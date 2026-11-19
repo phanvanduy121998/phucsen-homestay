@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Phúc Sen Homestay - Nhà Sàn Làng Nghề Quảng Uyên</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div class="header-top">
+      <div>
+        <h1>🏡 Phúc Sen Homestay</h1>
+        <p class="subtitle">Kết nối nhà sàn bản địa • Quảng Uyên, Cao Bằng</p>
+      </div>
+      <button id="toggleRoleBtn" class="role-btn">👩‍🌾 Chế độ Chủ nhà</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- KHU VỰC DÀNH CHO KHÁCH DU LỊCH -->
+    <section id="guestView">
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">Tất cả nhà sàn</button>
+        <button class="filter-btn" data-filter="available">🟢 Chỉ xem nhà còn phòng</button>
+      </div>
+
+      <div id="homestayList" class="homestay-grid">
+        <!-- Danh sách homestay hiển thị tại đây -->
+      </div>
+    </section>
+
+    <!-- KHU VỰC DÀNH CHO CHỦ NHÀ / QUẢN LÝ -->
+    <section id="hostView" class="hidden">
+      <div class="host-banner">
+        <h2>👩‍🌾 Quản lý trạng thái phòng & Đăng ký nhà sàn</h2>
+        <p>Chạm vào nút trạng thái để báo cho khách biết nhà còn phòng hay đã kín chỗ, hoặc thêm nhà sàn mới bên dưới.</p>
+      </div>
+
+      <!-- FORM THÊM HOMESTAY MỚI -->
+      <form id="addHomestayForm" class="add-form">
+        <h3>➕ Thêm nhà sàn / Homestay mới</h3>
+        <div class="form-grid">
+          <input type="text" id="newName" placeholder="Tên Homestay (VD: Nhà sàn Pác Rằng)" required />
+          <input type="text" id="newHost" placeholder="Tên chủ nhà (VD: Anh Nông Văn A)" required />
+          <input type="text" id="newLocation" placeholder="Địa chỉ thôn/xóm (VD: Pác Rằng, Phúc Sen)" required />
+          <input type="text" id="newPrice" placeholder="Giá phòng (VD: 150.000đ / người / đêm)" required />
+          <input type="tel" id="newPhone" placeholder="Số điện thoại / Zalo (VD: 0912345678)" required />
+          <input type="text" id="newServices" placeholder="Trải nghiệm (VD: Rèn dao, cơm Nùng An)" required />
+        </div>
+        <button type="submit" class="submit-btn">Lưu nhà sàn mới vào danh sách</button>
+      </form>
+
+      <div id="hostControlList" class="host-list">
+        <!-- Danh sách bật/tắt phòng cho chủ nhà -->
+      </div>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <p>Phát triển tại Làng nghề Phúc Sen – Quảng Uyên, Cao Bằng 🌿</p>
+  </footer>
+
+  <script src="app.js"></script>
+  <script>
+    // Xử lý sự kiện thêm homestay mới
+    document.getElementById('addHomestayForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const newHomestay = {
+        id: Date.now(),
+        name: document.getElementById('newName').value,
+        host: document.getElementById('newHost').value,
+        location: document.getElementById('newLocation').value,
+        price: document.getElementById('newPrice').value,
+        services: document.getElementById('newServices').value,
+        phone: document.getElementById('newPhone').value,
+        available: true
+      };
+      homestays.push(newHomestay);
+      saveData();
+      renderGuestView();
+      renderHostView();
+      this.reset();
+    });
+  </script>
+</body>
+</html>
+
